@@ -34,8 +34,8 @@ process trimming {
         --mean $params.soapnuke_mean \
         --adapter1 $params.soapnuke_adapter1 \
         --adapter2 $params.soapnuke_adapter2 \
-        --fq1 ${sub_sample_1} \
-        --fq2 ${sub_sample_2} \
+        --fq1 ${sample_id}_1.fastq.gz \
+        --fq2 ${sample_id}_2.fastq.gz \
         --cleanFq1 ${sample_id}"_paired_R1.trimmed.fastq.gz" \
         --cleanFq2 ${sample_id}"_paired_R2.trimmed.fastq.gz" \
         --outDir .
