@@ -4,7 +4,6 @@ nextflow.enable.dsl=2
 include { bwa_index } from './modules/bwa_index'
 include { download_index } from './modules/download_index'
 include { make_bed } from './modules/make_bed'
-include {downsampling} from  './modules/downsampling.nf'
 include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include {align} from './modules/align'
@@ -76,15 +75,12 @@ workflow {
    
      make_bed(genes_ch)
 
-     //downsampling
-
-     downsampling(inputPairReads)
      
      //alignment
-     fastqc(downsampling.out.sub_sample)
+     fastqc(inputPairReads)
 
      //trimming
-     trimming(downsampling.out.sub_sample)
+     trimming(inputPairReads)
 
      //alignement
      align(indexed_ch.collect(),trimming.out.samples_trimmed)

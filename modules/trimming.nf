@@ -14,7 +14,7 @@ process trimming {
         }
  
     input:
-      tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(sub_sample_1), path(sub_sample_2)
+      tuple val(sample_id), val(id_patient), val(gender),val(id_run), path(read_1), path(read_2)
 
     output:
     tuple val(sample_id),val(id_patient),val(gender), val(id_run), path("${sample_id}_paired_R*.trimmed.fastq.gz") ,emit: samples_trimmed
@@ -24,6 +24,9 @@ process trimming {
 
     script:
     """
+    ln -s ${read_1} ${sample_id}_1.fastq.gz
+    ln -s ${read_2} ${sample_id}_2.fastq.gz
+
     SOAPnuke filter \
         --lowQual $params.soapnuke_lowQual \
         --qualRate $params.soapnuke_qualRate \
