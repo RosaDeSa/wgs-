@@ -32,7 +32,7 @@ include {multiqc} from './modules/multiqc.nf' */
 // TODO: adjust input channel read to read csv file
 
 log.info """
-         Ampliseq Pipeline (version 1)
+         WGS Pipeline (version 1)
          ===================================
          Nextflow DSL2
          Author: Rosa De Santis 
@@ -87,11 +87,11 @@ workflow {
 
      //sort
 
-     /*sorting(align.out.aligned_sam) 
+     sorting(align.out.aligned_sam) 
 
      //picard
 
-     picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     /*picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //featureCounts
 
