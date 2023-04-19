@@ -24,7 +24,7 @@ process align {
     script:
     """
 
-    bwa mem -K 100000000 -R "@RG\\tID:${sample_id}\\tPU:${id_run}\\tSM:${sample_id}\\tLB:${sample_id}\\tPL:atoplex" -t 24 -M $params.outdir/ref/index/genome.fa \
+    bwa mem -K 100000000 -R "@RG\\tID:${sample_id}\\tPU:${id_run}\\tSM:${sample_id}\\tLB:${sample_id}\\tPL:Atoplex" -t 24 -M $params.outdir/ref/index/genome.fa \
     ${samples_trimmed} > ${sample_id}.sam
 
     """

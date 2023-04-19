@@ -7,9 +7,9 @@ include { make_bed } from './modules/make_bed'
 include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include {align} from './modules/align'
-/*include {sorting} from './modules/sorting'
+include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
-include {featureCounts} from './modules/featureCounts'
+/*include {featureCounts} from './modules/featureCounts'
 include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
 include {faidx} from './modules/faidx.nf'
@@ -32,7 +32,7 @@ include {multiqc} from './modules/multiqc.nf' */
 // TODO: adjust input channel read to read csv file
 
 log.info """
-         Ampliseq Pipeline (version 1)
+         WGS Pipeline (version 1)
          ===================================
          Nextflow DSL2
          Author: Rosa De Santis 
@@ -87,7 +87,7 @@ workflow {
 
      //sort
 
-     /*sorting(align.out.aligned_sam) 
+     sorting(align.out.aligned_sam) 
 
      //picard
 
@@ -95,7 +95,7 @@ workflow {
 
      //featureCounts
 
-     featureCounts(sorting.out.aligned_bam_bai)
+     /*featureCounts(sorting.out.aligned_bam_bai)
 
      //calculator
 
