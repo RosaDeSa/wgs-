@@ -7,9 +7,9 @@ include { make_bed } from './modules/make_bed'
 include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include {align} from './modules/align'
-/*include {sorting} from './modules/sorting'
+include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
-include {featureCounts} from './modules/featureCounts'
+/*include {featureCounts} from './modules/featureCounts'
 include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
 include {faidx} from './modules/faidx.nf'
@@ -91,11 +91,11 @@ workflow {
 
      //picard
 
-     /*picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //featureCounts
 
-     featureCounts(sorting.out.aligned_bam_bai)
+     /*featureCounts(sorting.out.aligned_bam_bai)
 
      //calculator
 
