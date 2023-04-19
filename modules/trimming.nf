@@ -36,8 +36,7 @@ process trimming {
         --adapter2 $params.soapnuke_adapter2 \
         --fq1 ${sample_id}_1.fastq.gz \
         --fq2 ${sample_id}_2.fastq.gz \
-        --trim_tail1 $params.trimmed_bases \
-        --trim_tail2 $params.trimmed_bases \
+        --trim_tail1 0,10,0,10 \
         --cleanFq1 ${sample_id}"_paired_R1.trimmed.fastq.gz" \
         --cleanFq2 ${sample_id}"_paired_R2.trimmed.fastq.gz" \
         --outDir .
