@@ -9,6 +9,7 @@ include { trimming } from './modules/trimming'
 include {align} from './modules/align'
 include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
+include {markduplicates} from './modules/markduplicates.nf'
 /*include {featureCounts} from './modules/featureCounts'
 include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
@@ -92,6 +93,8 @@ workflow {
      //picard
 
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     
+     markduplicates(align.out.aligned_sam)
 
      //featureCounts
 
