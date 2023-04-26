@@ -18,7 +18,7 @@ container 'docker://quay.io/biocontainers/gatk4:4.3.0.0--py36hdfd78af_0'
 
     output:
 
-    tuple val(sample_id),  val(id_patient), val(gender),val(id_run), file("${sample_id}.bqsr.bam"), emit: bam_bqsr_ch // will be needed for Haplotyper, Manta
+    tuple val(sample_id),  val(id_patient), val(gender),val(id_run), path("${sample_id}.bqsr.bam"), emit: bam_bqsr_ch // will be needed for Haplotyper, Manta
   
 
     script:
@@ -27,7 +27,5 @@ container 'docker://quay.io/biocontainers/gatk4:4.3.0.0--py36hdfd78af_0'
   
     """
 }
-//else if (filename.endsWith("bam.bai"))     "GATK/applybsrq/$filename"
-  //tuple val(name), file("${name}.bqsr.bam.bai"), emit: indexed_bam_bqsr
-    //samtools index ${name}_bqsr.bam
+
 

@@ -12,8 +12,10 @@ process haplotypecall {
 
 
    input:
-   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(aligned_bam_bai)
+
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(indexed_bam_bqsr)
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_bqsr_spark)
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bam_bqsr_ch)
    path(fai)
    path(genome_dict)
    //path(gatk_dict)
@@ -37,10 +39,11 @@ process haplotypecall {
    """
       
        gatk HaplotypeCaller \\
-        --input ${sample_id}.sorted.bam \\
+        --input ${sample_id}.bqsr.bam \\
         --output ${sample_id}_haplotype.vcf \\
         --reference $fasta \\
         --dbsnp ${known_dbsnp} \\
         --tmp-dir . \\
    """
 }
+

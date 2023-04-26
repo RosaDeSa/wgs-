@@ -10,13 +10,13 @@ include {align} from './modules/align'
 include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
 include {markduplicates} from './modules/markduplicates.nf'
-/*
 include {faidx} from './modules/faidx.nf'
 include {baserecal} from './modules/baserecal.nf'
 include {baserecalspark} from './modules/baserecal_spark.nf'
 include {applybsrq} from './modules/applybsrq.nf'
+include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
-include {bcftools} from './modules/bcftools.nf'
+/*include {bcftools} from './modules/bcftools.nf'
 include {vcf_panel} from './modules/vcf_panel.nf'
 include {vep} from './modules/vep.nf'
 include {oncokb} from './modules/oncokb.nf'
@@ -108,9 +108,12 @@ workflow {
 
      applybsrq(markduplicates.out.bam_markdup, baserecalspark.out.gatk_bqsr_spark,fasta.collect(),faidx.out.fai)
 
+     sorting_bsqr(applybsrq.out.bam_bqsr_ch)
+
      //Haplotyper
-    /* haplotypecall(sorting.out.aligned_bam_bai,
-                    baserecalspark.out.gatk_bqsr_spark.collect(), 
+    haplotypecall(sorting_bsqr.out.aligned_bam_bai,
+                    baserecalspark.out.gatk_bqsr_spark.collect,
+                    applybsrq.out.bam_bqsr_ch,
                     faidx.out.fai.collect(), 
                     picard.out.genome_dict, 
                     known_dbsnp.collect(),
@@ -119,7 +122,7 @@ workflow {
                     know_1000G.collect(),
                     know_1000G_tbi, 
                     known_mills.collect(), 
-                    known_mills_tbi) */
+                    known_mills_tbi) 
 
      /*bcftools(filtercalls.out.filtered_vcf)
      //vcftomaf
