@@ -111,7 +111,7 @@ workflow {
      sorting_bsqr(applybsrq.out.bam_bqsr_ch)
 
      //Haplotyper
-    haplotypecall(sorting_bsqr.out.aligned_bam_bai,
+    haplotypecall(sorting_bsqr.out.indexed_bam_bqsr,
                     baserecalspark.out.gatk_bqsr_spark.collect,
                     applybsrq.out.bam_bqsr_ch,
                     faidx.out.fai.collect(), 
