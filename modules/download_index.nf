@@ -13,7 +13,7 @@ process download_index {
 
     script:
     """
-    mkdir -p $params.outdir/ref/index
+    mv Index_*/* $params.outdir/
     
     """
 }
