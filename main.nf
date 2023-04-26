@@ -112,7 +112,7 @@ workflow {
 
      //Haplotyper
     haplotypecall(sorting_bsqr.out.indexed_bam_bqsr,
-                    baserecalspark.out.gatk_bqsr_spark.collect,
+                    baserecalspark.out.gatk_bqsr_spark,
                     applybsrq.out.bam_bqsr_ch,
                     faidx.out.fai.collect(), 
                     picard.out.genome_dict, 
