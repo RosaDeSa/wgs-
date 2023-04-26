@@ -9,15 +9,14 @@ include { trimming } from './modules/trimming'
 include {align} from './modules/align'
 include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
-/*include {featureCounts} from './modules/featureCounts'
-include {calculator} from './modules/calculator.nf'
-include {coverage_stat} from './modules/coverage_stat.nf'
+include {markduplicates} from './modules/markduplicates.nf'
 include {faidx} from './modules/faidx.nf'
-include {download_reference} from './modules/download_reference.nf'
 include {baserecal} from './modules/baserecal.nf'
 include {baserecalspark} from './modules/baserecal_spark.nf'
+include {applybsrq} from './modules/applybsrq.nf'
+include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
-include {bcftools} from './modules/bcftools.nf'
+/*include {bcftools} from './modules/bcftools.nf'
 include {vcf_panel} from './modules/vcf_panel.nf'
 include {vep} from './modules/vep.nf'
 include {oncokb} from './modules/oncokb.nf'
@@ -92,36 +91,29 @@ workflow {
      //picard
 
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
-
-     //featureCounts
-
-     /*featureCounts(sorting.out.aligned_bam_bai)
-
-     //calculator
-
-     calculator(featureCounts.out.base_coverage)
-
-     //coverage_stat
-
-     coverage_stat(featureCounts.out.base_coverage)
+     
+     markduplicates(align.out.aligned_sam)
 
      //faidx samtools
 
      faidx(fasta.collect()) 
 
      //BaseRecalibrator
-
-     //genomedict(fasta)
-     baserecal(sorting.out.aligned_bam_bai,faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi, picard.out.genome_dict)
+     
+     baserecal(markduplicates.out.bam_markdup,faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi, picard.out.genome_dict)
 
      //BaseRecalibrationSpark
      
-     baserecalspark(sorting.out.aligned_bam_bai,picard.out.genome_dict, faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi)
+     baserecalspark(markduplicates.out.bam_markdup,picard.out.genome_dict, faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi)
 
-     
+     applybsrq(markduplicates.out.bam_markdup, baserecalspark.out.gatk_bqsr_spark,fasta.collect(),faidx.out.fai)
+
+     sorting_bsqr(applybsrq.out.bam_bqsr_ch)
+
      //Haplotyper
-    /* haplotypecall(sorting.out.aligned_bam_bai,
-                    baserecalspark.out.gatk_bqsr_spark.collect(), 
+    haplotypecall(sorting_bsqr.out.aligned_bam_bai,
+                    baserecalspark.out.gatk_bqsr_spark.collect,
+                    applybsrq.out.bam_bqsr_ch,
                     faidx.out.fai.collect(), 
                     picard.out.genome_dict, 
                     known_dbsnp.collect(),
@@ -130,7 +122,7 @@ workflow {
                     know_1000G.collect(),
                     know_1000G_tbi, 
                     known_mills.collect(), 
-                    known_mills_tbi) */
+                    known_mills_tbi) 
 
      /*bcftools(filtercalls.out.filtered_vcf)
      //vcftomaf

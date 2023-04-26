@@ -14,10 +14,10 @@ process markduplicates {
   tuple val(name), val(id_patient), val(gender),val(id_run), file(aligned_sam) 
 
   output:
-  tuple val(name), val(id_patient), val(gender),val(id_run), path("${sample_id}_MarkDup.bam"), emit: bam_markdup
+  tuple val(name), val(id_patient), val(gender),val(id_run), path("${sample_id}_markdup.bam"), emit: bam_markdup
 
   """
-  gatk MarkDuplicates -M marked_dup_metrics.txt -I $bam_sort -O ${sample_id}.markdup.bam
+  gatk MarkDuplicates -M marked_dup_metrics.txt -I $bam_sort -O ${sample_id}_markdup.bam
   """
 
 }
