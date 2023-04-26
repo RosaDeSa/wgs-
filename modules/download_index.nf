@@ -14,6 +14,8 @@ process download_index {
     path(index)
 
     output:
+    path("genome.fa")
+    path("genome.fa.sa")
     path('*txt'), emit: genome_index
 
     script:
