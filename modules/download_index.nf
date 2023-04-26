@@ -4,6 +4,11 @@ process download_index {
     echo true
     label 'd_index'
     tag 'BWA_INDEX'
+    publishDir "$params.outdir" , mode: 'copy',
+     saveAs: {filename ->
+        if (filename.indexOf("fa"))     "ref/index/$filename"
+      else null
+   }
 
     input:
     path(index)
@@ -13,7 +18,8 @@ process download_index {
 
     script:
     """
-    mv Index_*/* $params.outdir/
+
+    echo bwa_index > done.txt
     
     """
 }
