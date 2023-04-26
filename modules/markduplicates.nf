@@ -11,7 +11,7 @@ process markduplicates {
 
 
   input:
-  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(aligned_sam)
+    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(aligned_bam_bai)
 
   output:
   tuple val(sample_id), val(id_patient), val(gender),val(id_run), path("${sample_id}_markdup.bam"), emit: bam_markdup
