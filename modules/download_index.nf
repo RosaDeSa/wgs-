@@ -4,11 +4,7 @@ process download_index {
     echo true
     label 'd_index'
     tag 'BWA_INDEX'
-    publishDir "$params.outdir" , mode: 'copy',
-     saveAs: {filename ->
-        if (filename.indexOf("fa"))     "ref/index/$filename"
-      else null
-   }
+
 
     input:
     path(index)
@@ -21,7 +17,10 @@ process download_index {
     script:
     """
 
-    echo bwa_index > done.txt
+    mkdir -p $params.outdir/ref/index
+    cp Index_*/* $params.outdir/ref/index/
+    samtools faidx $params.outdir/ref/index/genome.fa 
+    echo bwa_index > done.txt 
     
     """
 }
