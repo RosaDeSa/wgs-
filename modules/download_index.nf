@@ -13,8 +13,7 @@ process download_index {
 
     script:
     """
-    cp Index_*/* $params.outdir/ref/index
-    samtools faidx $params.outdir/ref/index/genome.fa 
+    cp Index_*/* $params.outdir
     echo bwa_index > done.txt
     """
 }
