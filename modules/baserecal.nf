@@ -13,7 +13,7 @@ process baserecal {
    }
 
 input:
-tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
+tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(bam_markdup)
 path(fai)
 path(known_dbsnp)
 path(known_dbsnp_tbi)
@@ -31,7 +31,7 @@ script:
 """
 
 gatk BaseRecalibrator \
-  --input ${sample_id}.sorted.bam \
+  --input ${sample_id}_markdup.bam \
   --reference $fasta \
   --known-sites $known_mills \
   --known-sites $know_1000G \
