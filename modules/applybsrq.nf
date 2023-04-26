@@ -23,7 +23,7 @@ container 'docker://quay.io/biocontainers/gatk4:4.3.0.0--py36hdfd78af_0'
 
     script:
     """
-    gatk ApplyBQSR -I ${sample_id}_markdup.bam -R $fasta -bqsr $${sample_id}.table -O ${sample_id}.bqsr.bam
+    gatk ApplyBQSR -I ${sample_id}_markdup.bam -R $fasta -bqsr ${sample_id}.table -O ${sample_id}.bqsr.bam
   
     """
 }
