@@ -13,8 +13,8 @@ process download_index {
 
     script:
     """
-    cp Index_*/* $params.outdir
-    echo bwa_index > done.txt
+    mkdir -p $params.outdir/ref/index
+    
     """
 }
 
