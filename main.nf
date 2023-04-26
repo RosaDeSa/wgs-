@@ -92,7 +92,7 @@ workflow {
 
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
      
-     markduplicates(align.out.aligned_sam)
+     markduplicates(sorting.out.aligned_sam)
 
      //faidx samtools
 
