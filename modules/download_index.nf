@@ -16,7 +16,7 @@ process download_index {
 
     script:
     """
-
+    cd /home/tigem/r.desantis/wgs
     mkdir -p $params.outdir/ref/index
     cp Index_*/* $params.outdir/ref/index/
     samtools faidx $params.outdir/ref/index/genome.fa 
