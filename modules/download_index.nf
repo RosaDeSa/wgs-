@@ -10,8 +10,6 @@ process download_index {
     path(index)
 
     output:
-    path("genome.fa")
-    path("genome.fa.sa")
     path('*txt'), emit: genome_index
 
     script:
@@ -20,6 +18,7 @@ process download_index {
     mkdir -p /home/tigem/r.desantis/wgs/results/ref/index
     cp Index_*/* /home/tigem/r.desantis/wgs/results/ref/index
     samtools faidx /home/tigem/r.desantis/wgs/results/ref/index/genome.fa 
+    mv /home/tigem/r.desantis/wgs/results/ref/index /mnt/novaseq/r.desantis/wgs
     echo bwa_index > done.txt 
     
     """
