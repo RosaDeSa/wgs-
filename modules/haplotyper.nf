@@ -27,7 +27,7 @@ process haplotypecall {
    path(known_mills)
    path(known_mills_tbi)
 
-  
+
     
 
    output:
