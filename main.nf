@@ -106,7 +106,7 @@ workflow {
      
      baserecalspark(markduplicates.out.bam_markdup,picard.out.genome_dict, faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi)
 
-     applybsrq(markduplicates.out.bam_markdup, baserecalspark.out.gatk_bqsr_spark,fasta.collect(),faidx.out.fai)
+     applybsrq(markduplicates.out.bam_markdup, baserecalspark.out.gatk_bqsr_spark,fasta.collect(),faidx.out.fai,picard.out.genome_dict)
 
      sorting_bsqr(applybsrq.out.bam_bqsr_ch)
 
