@@ -126,7 +126,7 @@ workflow {
                     known_mills_tbi) 
      //vep
      //download_cachedir
-     vep(vcf_panel.out.subset_panel,fasta.collect())
+     //vep(vcf_panel.out.subset_panel,fasta.collect())
 
      /*bcftools(filtercalls.out.filtered_vcf)
      //vcftomaf
