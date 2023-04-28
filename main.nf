@@ -122,17 +122,15 @@ workflow {
                     know_1000G.collect(),
                     know_1000G_tbi, 
                     known_mills.collect(), 
+     
                     known_mills_tbi) 
+     //vep
+     //download_cachedir
+     vep(vcf_panel.out.subset_panel,fasta.collect())
 
      /*bcftools(filtercalls.out.filtered_vcf)
      //vcftomaf
      vcf_panel(bcftools.out.passing_filter)
-
-     //vep
-     //download_cachedir()
-
-
-     vep(vcf_panel.out.subset_panel,fasta.collect())
 
      variantcalling(vcf_panel.out.subset_panel, vcf_panel.out.sample_tmp, vep.out.vep)
 
