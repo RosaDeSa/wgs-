@@ -22,7 +22,7 @@ process sorting_bsqr {
     script:
     """
 
-    samtools index ${sample_id}_bqsr.bam
+    samtools index ${sample_id}.bqsr.bam
 
  
     """
