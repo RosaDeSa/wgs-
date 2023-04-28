@@ -15,6 +15,7 @@ container 'docker://quay.io/biocontainers/gatk4:4.3.0.0--py36hdfd78af_0'
     tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_bqsr_spark)
     path(fasta)
     path(fai)
+    path(genome_dict)
 
     output:
 
