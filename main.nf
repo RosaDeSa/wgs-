@@ -17,7 +17,6 @@ include {applybsrq} from './modules/applybsrq.nf'
 include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
 include {vep} from './modules/vep.nf'
-
 /*include {bcftools} from './modules/bcftools.nf'
 include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
