@@ -42,14 +42,13 @@ script:
 
 }
 
-haplotypecall.out.gatk_haplotyper
 
 //perl \$vcftomaf --input-vcf ${gatk_haplotyper} --output-maf ${sample_id}.maf --vep-path /opt/vep/src/ensembl-vep/  --ncbi-build "GRCh38" --tumor-id ${sample_id} --vcf-tumor-id ${sample_id} --ref-fasta $fasta --cache-version 102
 //vcftomaf="$baseDir/bin/vcftomaf.pl"
 //perl \$vcftomaf --input-vcf ${gatk_haplotyper} --output-maf ${sample_id}.maf --vep-path /opt/vep/src/ensembl-vep/  --ncbi-build "GRCh38" --normal-id ${sample_id} --vcf-normal-id ${sample_id} --ref-fasta $fasta --cache-version 102
 
   
-
+/*
     script:
     // TODO: pass in channel..
     genome = params.genome
@@ -69,4 +68,4 @@ haplotypecall.out.gatk_haplotyper
         --offline   \
         --dir_cache "/.vep/" \
         --vcf
-    rm -rf ${sample_id}
+    rm -rf ${sample_id} */
