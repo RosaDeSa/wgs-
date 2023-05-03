@@ -1,6 +1,6 @@
 
 process snpeff {
-     container 'docker://biocontainers/snpeff'
+     container 'docker://quay.io/biocontainers/snpeff:5.1--hdfd78af_2'
     echo true
     label 'snpeff'
     tag 'snpeff'
