@@ -32,7 +32,6 @@ script:
         --per_gene \
         --stats_file ${sample_id}.VEP.summary.html \
         --total_length \
-        --offline   \
         --dir_cache "/home/tigem/r.desantis/.vep" \
         --cache 102 
         --vcf
@@ -70,3 +69,5 @@ script:
         --dir_cache "/.vep/" \
         --vcf
     rm -rf ${sample_id} */
+
+           //remove --offline   \
