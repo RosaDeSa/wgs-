@@ -22,20 +22,18 @@ process vep {
  
 script:
 """
-    vep \
-        -i ${gatk_haplotyper} \
-        -o ${sample_id}.VEP.ann.vcf \
-        --assembly $fasta \
-        --everything \
-        --filter_common \
-        --format vcf \
-        --per_gene \
-        --stats_file ${sample_id}.VEP.summary.html \
-        --total_length \
-        --dir_cache "/home/tigem/r.desantis/.vep" \
-        --cache 102 \
-        --vcf /
-        --ncbi-build "GRCh38"
+    vep \\
+        -i ${gatk_haplotyper} \\
+        -o ${sample_id}.VEP.ann.vcf \\
+        $fasta \\
+        --assembly GRCh38 \\
+        --per_gene \\
+        --cache \\
+        --assembly GRCh38 \\
+        --dir_cache "/home/tigem/r.desantis/.vep" \\
+        --cache_version 102 \\
+        --stats_file ${sample_id}.summary.html\\
+
 
 """
 
@@ -69,6 +67,21 @@ script:
         --offline   \
         --dir_cache "/.vep/" \
         --vcf
-    rm -rf ${sample_id} */
+    rm -rf ${sample_id} 
+    
+        vep \
+        -i ${gatk_haplotyper} \
+        -o ${sample_id}.VEP.ann.vcf \
+        --assembly $fasta \
+        --everything \
+        --filter_common \
+        --format vcf \
+        --per_gene \
+        --stats_file ${sample_id}.VEP.summary.html \
+        --total_length \
+        --dir_cache "/home/tigem/r.desantis/.vep" \
+        --cache 102 \
+        --vcf /
+        --ncbi-build "GRCh38"*/
 
            //remove --offline   \
