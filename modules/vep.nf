@@ -18,7 +18,7 @@ process vep {
 
    output:
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.VEP.ann.vcf"), emit:vep
-   path "${sample_id}.VEP.summary.html", emit: vepReport
+   path "${sample_id}.summary.html", emit: vepReport
  
 script:
 """
