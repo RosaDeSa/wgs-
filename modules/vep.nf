@@ -33,7 +33,7 @@ script:
         --stats_file ${sample_id}.VEP.summary.html \
         --total_length \
         --offline   \
-        --dir_cache "~/.vep" \
+        --dir_cache "/home/tigem/r.desantis/.vep" \
         --vcf
 
 """
