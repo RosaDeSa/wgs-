@@ -33,8 +33,9 @@ script:
         --stats_file ${sample_id}.VEP.summary.html \
         --total_length \
         --dir_cache "/home/tigem/r.desantis/.vep" \
-        --cache 102 
-        --vcf
+        --cache 102 \
+        --vcf /
+        --ncbi-build "GRCh38"
 
 """
 
