@@ -17,7 +17,7 @@ include {applybsrq} from './modules/applybsrq.nf'
 include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
 include {vep} from './modules/vep.nf'
-include {snpeff} from './modules/snpeff.nf'
+//include {snpeff} from './modules/snpeff.nf'
 /*include {bcftools} from './modules/bcftools.nf'
 include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
@@ -127,7 +127,7 @@ workflow {
                     known_mills_tbi) 
      
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
-     snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
+     //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir
      //vep(vcf_panel.out.subset_panel,fasta.collect())
 
