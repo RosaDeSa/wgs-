@@ -34,7 +34,7 @@ script:
         --total_length \
         --offline   \
         --dir_cache "/home/tigem/r.desantis/.vep" \
-        --cache-version 102 
+        --cache 102 
         --vcf
 
 """
