@@ -33,7 +33,6 @@ script:
         --merged \\
         --symbol \\
         --cache \\
-        --summary \\
         --assembly GRCh38 \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
         --cache_version 102 \\
