@@ -28,6 +28,7 @@ script:
         $fasta \\
         --assembly GRCh38 \\
         --per_gene \\
+        --symbol \\
         --cache \\
         --assembly GRCh38 \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
