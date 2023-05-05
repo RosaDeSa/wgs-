@@ -28,7 +28,6 @@ script:
         $fasta \\
         --assembly GRCh38 \\
         --per_gene \\
-        --vcf \\
         --hgvs \\
         --mane \\
         --merged \\
