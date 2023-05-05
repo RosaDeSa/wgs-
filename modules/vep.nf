@@ -28,12 +28,20 @@ script:
         $fasta \\
         --assembly GRCh38 \\
         --per_gene \\
+        --vcf \\
+        --hgvs \\
+        --mane \\
+        --merged \\
         --symbol \\
         --cache \\
+        --summary \\
         --assembly GRCh38 \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
         --cache_version 102 \\
         --stats_file ${sample_id}.summary.html\\
+        --af \\
+        --af_gnomade \\
+        --af_exac \\
 
 
 """
