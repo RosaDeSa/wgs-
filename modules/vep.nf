@@ -27,7 +27,6 @@ script:
         -o ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
-        --per_gene \\
         --hgvs \\
         --mane \\
         --symbol \\
