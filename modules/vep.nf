@@ -40,7 +40,7 @@ script:
         --cache_version 102 \\
         --stats_file ${sample_id}.summary.html\\
         --af \\
-        --af_gnomade \\
+        --af_gnomad \\
         --af_exac \\
 
 
