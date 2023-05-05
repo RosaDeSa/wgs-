@@ -18,7 +18,7 @@ process vep {
 
    output:
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.VEP.ann.vcf"), emit:vep
-   path "${sample_id}.VEP.summary.html", emit: vepReport
+   path "${sample_id}.summary.html", emit: vepReport
  
 script:
 """
@@ -28,11 +28,20 @@ script:
         $fasta \\
         --assembly GRCh38 \\
         --per_gene \\
+        --vcf \\
+        --hgvs \\
+        --mane \\
+        --merged \\
+        --symbol \\
         --cache \\
+        --summary \\
         --assembly GRCh38 \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
         --cache_version 102 \\
         --stats_file ${sample_id}.summary.html\\
+        --af \\
+        --af_gnomade \\
+        --af_exac \\
 
 
 """
