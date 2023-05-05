@@ -30,7 +30,6 @@ script:
         --per_gene \\
         --hgvs \\
         --mane \\
-        --merged \\
         --symbol \\
         --cache \\
         --assembly GRCh38 \\
