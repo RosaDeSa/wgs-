@@ -6,8 +6,8 @@ process vep {
     tag 'vep'
     publishDir "$params.outdir" , mode: 'copy',
      saveAs: {filename ->
-        if (filename.indexOf("vcf"))        "VEP/Annotation/$filename"
-      else if (filename.indexOf("html"))     "VEP/Annotation/$filename"
+        if (filename.indexOf("VEP.ann.vcf"))        "VEP/Annotation/$filename"
+      else if (filename.indexOf("summary.html"))     "VEP/Annotation/$filename"
       else null
    }
 
@@ -36,19 +36,20 @@ script:
         --per_gene \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
         --cache_version 102 \\
+        --canonical \\
         --stats_file ${sample_id}.summary.html\\
+        --check_existing \\
+        --no_intergenic \\
         --af \\
         --af_gnomad 
 
         
-
-
 """
-
 
 
 }
 
+//rimuovere integeniche con _no_intergenic
 //vep --cache --merged --vcf --gene_phenotype --show_ref_allele --symbol --protein --biotype --plugin Phenotypes,file=/home/tigem/a.grimaldi/software/ensembl-vep/phenotypes.gff.gz,include_types=Gene --plugin
 //perl \$vcftomaf --input-vcf ${gatk_haplotyper} --output-maf ${sample_id}.maf --vep-path /opt/vep/src/ensembl-vep/  --ncbi-build "GRCh38" --tumor-id ${sample_id} --vcf-tumor-id ${sample_id} --ref-fasta $fasta --cache-version 102
 //vcftomaf="$baseDir/bin/vcftomaf.pl"
