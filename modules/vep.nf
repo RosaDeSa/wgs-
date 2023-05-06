@@ -31,12 +31,16 @@ script:
         --mane \\
         --symbol \\
         --cache \\
+        --show_ref_allele \\
         --assembly GRCh38 \\
+        --per_gene \\
         --dir_cache "/home/tigem/r.desantis/.vep" \\
         --cache_version 102 \\
         --stats_file ${sample_id}.summary.html\\
         --af \\
         --af_gnomad 
+
+        
 
 
 """
@@ -45,7 +49,7 @@ script:
 
 }
 
-
+//vep --cache --merged --vcf --gene_phenotype --show_ref_allele --symbol --protein --biotype --plugin Phenotypes,file=/home/tigem/a.grimaldi/software/ensembl-vep/phenotypes.gff.gz,include_types=Gene --plugin
 //perl \$vcftomaf --input-vcf ${gatk_haplotyper} --output-maf ${sample_id}.maf --vep-path /opt/vep/src/ensembl-vep/  --ncbi-build "GRCh38" --tumor-id ${sample_id} --vcf-tumor-id ${sample_id} --ref-fasta $fasta --cache-version 102
 //vcftomaf="$baseDir/bin/vcftomaf.pl"
 //perl \$vcftomaf --input-vcf ${gatk_haplotyper} --output-maf ${sample_id}.maf --vep-path /opt/vep/src/ensembl-vep/  --ncbi-build "GRCh38" --normal-id ${sample_id} --vcf-normal-id ${sample_id} --ref-fasta $fasta --cache-version 102
