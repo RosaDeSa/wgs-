@@ -27,7 +27,7 @@ script:
         -o ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
-        --hgvs \\
+        --vcf \\
         --mane \\
         --symbol \\
         --cache \\
