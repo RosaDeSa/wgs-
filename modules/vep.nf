@@ -41,10 +41,7 @@ script:
         --af_gnomad 
 
         
-
-
 """
-
 
 
 }
