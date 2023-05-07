@@ -25,7 +25,7 @@ process qualimap {
 script:
 
 """
-qualimap bamqc -bam ${sample_id}.sorted.bam -c --skip-duplicated   
+qualimap bamqc -bam ${sample_id}.sorted.bam -c --skip-duplicated --java-mem-size 4G
 
 """
 
