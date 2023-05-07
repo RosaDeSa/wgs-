@@ -17,6 +17,7 @@ include {applybsrq} from './modules/applybsrq.nf'
 include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
 include {vep} from './modules/vep.nf'
+include {qualimap} from './modules/qualimap.nf'
 //include {snpeff} from './modules/snpeff.nf'
 /*include {bcftools} from './modules/bcftools.nf'
 include {vcf_panel} from './modules/vcf_panel.nf'
@@ -92,6 +93,8 @@ workflow {
      //picard
 
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+
+     qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
@@ -127,6 +130,7 @@ workflow {
                     known_mills_tbi) 
      
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
+    
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir
      //vep(vcf_panel.out.subset_panel,fasta.collect())
