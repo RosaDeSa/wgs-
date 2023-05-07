@@ -25,7 +25,7 @@ process qualimap {
 script:
 
 """
-qualimap bamqc -bam ${sample_id}.sorted.bam -c --skip-duplicated --paired  --sorted  
+qualimap bamqc -bam ${sample_id}.sorted.bam -c --skip-duplicated  --sorted  
 
 """
 
