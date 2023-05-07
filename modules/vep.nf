@@ -6,8 +6,8 @@ process vep {
     tag 'vep'
     publishDir "$params.outdir" , mode: 'copy',
      saveAs: {filename ->
-        if (filename.indexOf("VEP.ann.vcf"))        "VEP/Annotation/$filename"
-      else if (filename.indexOf("summary.html"))     "VEP/Annotation/$filename"
+        if (filename.indexOf("VEP.ann.vcf"))        "VEP/$filename"
+      else if (filename.indexOf("html"))     "VEP/$filename"
       else null
    }
 
