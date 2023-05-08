@@ -24,7 +24,7 @@ process bcftools {
 
  """
 
-bcftools annotate -c ID -a ${gatk_haplotyper} > ${sample_id}.ann.vcf
+bcftools annotate -c ID -a ${gatk_haplotyper} ${sample_id}.ann.vcf
 
 """
 

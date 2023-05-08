@@ -13,8 +13,8 @@ process vep {
 
 
    input:
-  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
-   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
+   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
    path(fasta)
 
    output:
@@ -23,8 +23,8 @@ process vep {
  
 script:
 """
-    vep \\
-        -i ${bcftools} \\
+
+        -i ${gatk_haplotyper} \\
         -o ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
@@ -50,7 +50,10 @@ script:
 
 }
 /*
-        -i ${gatk_haplotyper} \\
+
+
+    vep \\
+        -i ${bcftools} \\
         -o ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
@@ -69,5 +72,6 @@ script:
         --no_intergenic \\
         --af \\
         --af_gnomad 
+
 
 */
