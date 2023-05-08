@@ -23,7 +23,8 @@ process bcftools {
    script:
 
  """
-bcftools annotate -c ID,INFO/CLNSIG,INFO/CLNDN,INFO/CLNACC,INFO/GENEINFO,INFO/FREQ,INFO/VC -a ${gatk_haplotyper} > ${sample_id}.ann.vcf
+gzip ${gatk_haplotyper} 
+bcftools annotate -c ID,INFO/CLNSIG,INFO/CLNDN,INFO/CLNACC,INFO/GENEINFO,INFO/FREQ,INFO/VC -a ${sample_id}_haplotype.vcf.gz > ${sample_id}.ann.vcf
 
 """
 
