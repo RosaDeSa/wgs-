@@ -13,7 +13,7 @@ process vep {
 
 
    input:
- tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("*.ann.vcf"), emit: bcftools
+  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
    //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
    path(fasta)
 
