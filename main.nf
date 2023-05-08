@@ -56,6 +56,7 @@ known_mills_tbi= Channel.fromPath( params.known_mills_tbi)
 known_dbsnp = Channel.fromPath( params.known_dbsnp)
 known_dbsnp_tbi = Channel.fromPath( params.known_dbsnp_tbi)
 bed_ch = Channel.fromPath(params.bed)
+//indexed_ch = Channel.fromPath('gs://tigem-gcacchiarelli-01/Reference/Human_hg38_v102/Index_bwa/genome.*')
 
 
 
@@ -69,6 +70,7 @@ workflow {
      } else {
           download_index(index_ch)
           indexed_ch=download_index.out.genome_index.collect()
+          //indexed_ch.collect()
      }
    
      make_bed(genes_ch)
