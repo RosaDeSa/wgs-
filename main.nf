@@ -16,10 +16,11 @@ include {baserecalspark} from './modules/baserecalspark.nf'
 include {applybsrq} from './modules/applybsrq.nf'
 include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
+include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
 //include {snpeff} from './modules/snpeff.nf'
-/*include {bcftools} from './modules/bcftools.nf'
+
 include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
 include {variantcalling} from './modules/variantcalling.nf'
@@ -128,14 +129,16 @@ workflow {
                     known_mills.collect(), 
      
                     known_mills_tbi) 
+     bcftools(haplotypecall.out.gatk_haplotyper)
+     vep(bcftools.out.bcftools,fasta.collect())
      
-     vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
+     //vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir
      //vep(vcf_panel.out.subset_panel,fasta.collect())
 
-     /*bcftools(filtercalls.out.filtered_vcf)
+     /*
      //vcftomaf
      vcf_panel(bcftools.out.passing_filter)
 
