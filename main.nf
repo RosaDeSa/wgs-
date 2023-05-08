@@ -21,17 +21,13 @@ include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
 //include {snpeff} from './modules/snpeff.nf'
 
-include {vcf_panel} from './modules/vcf_panel.nf'
+/*include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
 include {variantcalling} from './modules/variantcalling.nf'
 include {multiqc_conf} from './modules/multiqc_conf.nf'
 include {multiqc} from './modules/multiqc.nf' */
 
 
-/*
- * Create a channel for input read files
- */
-// TODO: adjust input channel read to read csv file
 
 log.info """
          WGS Pipeline (version 1)
@@ -131,7 +127,7 @@ workflow {
                     known_mills_tbi) 
      bcftools(haplotypecall.out.gatk_haplotyper)
      vep(bcftools.out.bcftools,fasta.collect())
-     
+
      //vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
