@@ -70,7 +70,7 @@ workflow {
      } else {
           download_index(index_ch)
           indexed_ch=download_index.out.genome_index.collect()
-          //indexed_ch.collect()
+          //indexed_ch=indexed_ch.collect()
      }
    
      make_bed(genes_ch)
