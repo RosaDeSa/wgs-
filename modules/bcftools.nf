@@ -24,7 +24,7 @@ process bcftools {
 
  """
 gzip ${gatk_haplotyper} 
-bcftools annotate -c ID,INFO/CLNSIG,INFO/CLNDN,INFO/CLNACC,INFO/GENEINFO,INFO/FREQ,INFO/VC -a ${sample_id}_haplotype.vcf.gz > ${sample_id}.ann.vcf
+bcftools annotate -c ID -a ${sample_id}_haplotype.vcf.gz > ${sample_id}.ann.vcf
 
 """
 
