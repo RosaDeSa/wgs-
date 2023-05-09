@@ -24,8 +24,8 @@ process vep {
 script:
 """
 
-        --input_file ${gatk_haplotyper} \\
-        --output_file ${sample_id}.VEP.ann.vcf \\
+        -i ${gatk_haplotyper} \\
+        -o ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
         --vcf \\
@@ -44,10 +44,7 @@ script:
         --af \\
         --af_gnomadg \\
         --af_gnomade \\
-        --af_1kg \\
-        --af_esp \\
-        --af_exac \\
-        --max_af
+       
 
 """
 
@@ -76,6 +73,11 @@ script:
         --no_intergenic \\
         --af \\
         --af_gnomad 
+
+         --af_1kg \\
+        --af_esp \\
+        --af_exac \\
+        --max_af
 
 
 */
