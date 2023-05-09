@@ -43,10 +43,8 @@ script:
         --no_intergenic \\
         --af \\
         --af_gnomad \\
-        --af_exac \\
         --af_1kg \\
         --af_esp \\
-        --af_exac \\
         --max_af
         
 """
