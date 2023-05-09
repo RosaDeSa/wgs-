@@ -1,6 +1,7 @@
 
 process vep {
-     container 'docker://giusmar/vep:0.0.1'
+     //container 'docker://giusmar/vep:0.0.1'
+    container'docker://ensemblorg/ensembl-vep'
     echo true
     label 'vep'
     tag 'vep'
@@ -43,7 +44,6 @@ script:
         --no_intergenic \\
         --af \\
         --af_gnomad \\
-        --af_exac \\
         --af_1kg \\
         --af_esp \\
         --af_exac \\
@@ -53,7 +53,7 @@ script:
 
 
 }
-
+//af exac can't be checked in this cache
 /*
 
 
