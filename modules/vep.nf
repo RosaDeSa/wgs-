@@ -42,11 +42,10 @@ script:
         --check_existing \\
         --no_intergenic \\
         --af \\
-        --af_gnomade \\
+        --af_gnomad \\
         --af_exac \\
         --af_1kg \\
         --af_esp \\
-        --af_gnomadg \\
         --af_exac \\
         --max_af
         
