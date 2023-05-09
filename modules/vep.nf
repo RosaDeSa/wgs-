@@ -46,6 +46,7 @@ script:
         --af_gnomad \\
         --af_1kg \\
         --af_esp \\
+        --af_exac \\
         --max_af
         
 """
