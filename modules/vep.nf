@@ -1,7 +1,7 @@
 
 process vep {
-    //container 'docker://giusmar/vep:0.0.1'
-    container'docker://ensemblorg/ensembl-vep'
+    container 'docker://giusmar/vep:0.0.1'
+    //container'docker://ensemblorg/ensembl-vep'
     echo true
     label 'vep'
     tag 'vep'
