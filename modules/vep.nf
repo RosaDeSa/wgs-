@@ -27,7 +27,7 @@ script:
  vep \\
         -i ${gatk_haplotyper} \\
         -o ${sample_id}.VEP.ann.vcf \\
-        $fasta \\
+        --fasta $fasta \\
         --assembly GRCh38 \\
         --vcf \\
         --mane \\
