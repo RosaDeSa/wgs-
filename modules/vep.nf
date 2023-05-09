@@ -24,8 +24,8 @@ process vep {
 script:
 """
 
-        -i ${gatk_haplotyper} \\
-        -o ${sample_id}.VEP.ann.vcf \\
+        --input_file ${gatk_haplotyper} \\
+        --output_file ${sample_id}.VEP.ann.vcf \\
         $fasta \\
         --assembly GRCh38 \\
         --vcf \\
