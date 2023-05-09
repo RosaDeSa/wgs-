@@ -49,9 +49,7 @@ script:
         --af_1kg \\
         --max_af \\
         --plugin Phenotypes \\
-        --plugin Carol \\
-        --plugin gnomADc \\
-        --plugin GWAS
+        --plugin Carol 
 
         
 """
