@@ -24,9 +24,7 @@ process vep {
 script:
 """
 
-        -i ${gatk_haplotyper} \\
-        -o ${sample_id}.VEP.ann.vcf \\
-        $fasta \\
+     
         --assembly GRCh38 \\
         --vcf \\
         --mane \\
@@ -42,7 +40,10 @@ script:
         --check_existing \\
         --no_intergenic \\
         --af \\
-        --af_gnomad 
+        --af_gnomad \\
+        $fasta \\
+        -i ${gatk_haplotyper} \\
+        -o ${sample_id}.VEP.ann.vcf \\
 
         
 """
