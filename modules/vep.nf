@@ -1,7 +1,7 @@
 
 process vep {
-    container 'docker://giusmar/vep:0.0.1'
-    //container'docker://ensemblorg/ensembl-vep'
+    //container 'docker://giusmar/vep:0.0.1'
+    container'docker://ensemblorg/ensembl-vep'
     echo true
     label 'vep'
     tag 'vep'
@@ -32,6 +32,8 @@ script:
         --vcf \\
         --mane \\
         --symbol \\
+        --protein \\
+        --biotype \\
         --cache \\
         --show_ref_allele \\
         --assembly GRCh38 \\
@@ -45,7 +47,12 @@ script:
         --af \\
         --af_gnomad \\
         --af_1kg \\
-        --max_af
+        --max_af \\
+        --plugin Phenotypes \\
+        --plugin Carol \\
+        --plugin gnomADc \\
+        --plugin GWAS
+
         
 """
 
@@ -54,7 +61,7 @@ script:
 //af exac can't be checked in this cache
 /*
 
-
+// ##VEP-command-line='vep --cache --merged --vcf --gene_phenotype --show_ref_allele --symbol --protein --biotype --plugin Phenotypes,file=/home/tigem/a.grimaldi/software/ensembl-vep/phenotypes.gff.gz,include_types=Gene --plugin Carol -i clean-Lollo.fq.gz.cut.fq.annotated.vcf -o clean-Lollo.fq.gz.cut.fq.annotated.vcf.vep.vcf'
     vep \\
         -i ${bcftools} \\
         -o ${sample_id}.VEP.ann.vcf \\
