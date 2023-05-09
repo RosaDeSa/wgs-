@@ -1,6 +1,7 @@
 
 process vep {
-     container 'docker://giusmar/vep:0.0.1'
+     //container 'docker://giusmar/vep:0.0.1'
+    container'docker://ensemblorg/ensembl-vep'
     echo true
     label 'vep'
     tag 'vep'
@@ -51,7 +52,7 @@ script:
 
 
 }
-
+//af exac can't be checked in this cache
 /*
 
 
