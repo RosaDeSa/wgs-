@@ -16,7 +16,7 @@ include {baserecalspark} from './modules/baserecalspark.nf'
 include {applybsrq} from './modules/applybsrq.nf'
 include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
-include {bcftools} from './modules/bcftools.nf'
+//include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
 //include {snpeff} from './modules/snpeff.nf'
@@ -56,6 +56,7 @@ known_mills_tbi= Channel.fromPath( params.known_mills_tbi)
 known_dbsnp = Channel.fromPath( params.known_dbsnp)
 known_dbsnp_tbi = Channel.fromPath( params.known_dbsnp_tbi)
 bed_ch = Channel.fromPath(params.bed)
+//indexed_ch = Channel.fromPath('gs://tigem-gcacchiarelli-01/Reference/Human_hg38_v102/Index_bwa/genome.*')
 
 
 
@@ -69,6 +70,7 @@ workflow {
      } else {
           download_index(index_ch)
           indexed_ch=download_index.out.genome_index.collect()
+          //indexed_ch=indexed_ch.collect()
      }
    
      make_bed(genes_ch)
@@ -125,10 +127,10 @@ workflow {
                     known_mills.collect(), 
      
                     known_mills_tbi) 
-     bcftools(haplotypecall.out.gatk_haplotyper)
-     vep(bcftools.out.bcftools,fasta.collect())
+     //bcftools(haplotypecall.out.gatk_haplotyper)
+     //vep(bcftools.out.bcftools,fasta.collect())
 
-     //vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
+     vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir

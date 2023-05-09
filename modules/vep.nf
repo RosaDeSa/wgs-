@@ -13,8 +13,8 @@ process vep {
 
 
    input:
-  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
-   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
+   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
    path(fasta)
 
    output:
@@ -23,6 +23,39 @@ process vep {
  
 script:
 """
+
+        -i ${gatk_haplotyper} \\
+        -o ${sample_id}.VEP.ann.vcf \\
+        $fasta \\
+        --assembly GRCh38 \\
+        --vcf \\
+        --mane \\
+        --symbol \\
+        --cache \\
+        --show_ref_allele \\
+        --assembly GRCh38 \\
+        --per_gene \\
+        --dir_cache "/home/tigem/r.desantis/.vep" \\
+        --cache_version 102 \\
+        --canonical \\
+        --stats_file ${sample_id}.summary.html\\
+        --check_existing \\
+        --no_intergenic \\
+        --af \\
+        --af_gnomadg \\
+        --af_gnomade \\
+        --af_1kg \\
+        --af_esp \\
+        --af_exac \\
+        --max_af
+
+"""
+
+
+}
+/*
+
+
     vep \\
         -i ${bcftools} \\
         -o ${sample_id}.VEP.ann.vcf \\
@@ -44,30 +77,5 @@ script:
         --af \\
         --af_gnomad 
 
-        
-"""
-
-
-}
-/*
-        -i ${gatk_haplotyper} \\
-        -o ${sample_id}.VEP.ann.vcf \\
-        $fasta \\
-        --assembly GRCh38 \\
-        --vcf \\
-        --mane \\
-        --symbol \\
-        --cache \\
-        --show_ref_allele \\
-        --assembly GRCh38 \\
-        --per_gene \\
-        --dir_cache "/home/tigem/r.desantis/.vep" \\
-        --cache_version 102 \\
-        --canonical \\
-        --stats_file ${sample_id}.summary.html\\
-        --check_existing \\
-        --no_intergenic \\
-        --af \\
-        --af_gnomad 
 
 */
