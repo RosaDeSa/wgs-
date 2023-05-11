@@ -30,3 +30,5 @@ process multiqc {
       
         """
 }
+
+       //multiqc $params.outdir -n multiqc.html  --config $params.outdir/Coverage_multiqc_config.yaml --cl-config "log_filesize_limit: 2000000000" 
