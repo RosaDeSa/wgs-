@@ -19,7 +19,7 @@ include {haplotypecall} from './modules/haplotyper.nf'
 //include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
-include {multiqc_conf} from './modules/multiqc_conf.nf'
+//include {multiqc_conf} from './modules/multiqc_conf.nf'
 include {multiqc} from './modules/multiqc.nf'
 //include {snpeff} from './modules/snpeff.nf'
 
@@ -133,7 +133,7 @@ workflow {
 
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
      
-     multiqc_conf(fastqc.out.completed)
+     //multiqc_conf(fastqc.out.completed)
 
      multiqc(fastqc.out.completed)
     
