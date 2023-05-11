@@ -19,13 +19,14 @@ include {haplotypecall} from './modules/haplotyper.nf'
 //include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
+include {multiqc_conf} from './modules/multiqc_conf.nf'
+include {multiqc} from './modules/multiqc.nf'
 //include {snpeff} from './modules/snpeff.nf'
 
 /*include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
 include {variantcalling} from './modules/variantcalling.nf'
-include {multiqc_conf} from './modules/multiqc_conf.nf'
-include {multiqc} from './modules/multiqc.nf' */
+ */
 
 
 
@@ -131,6 +132,10 @@ workflow {
      //vep(bcftools.out.bcftools,fasta.collect())
 
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
+     
+     multiqc_conf(variantcalling.out.completed2,fastqc.out.completed)
+
+     multiqc(variantcalling.out.completed2,fastqc.out.completed)
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir
@@ -144,9 +149,7 @@ workflow {
 
      oncokb(vep.out.vep)
      
-     multiqc_conf(variantcalling.out.completed2,fastqc.out.completed)
-
-     multiqc(variantcalling.out.completed2,fastqc.out.completed) */
+  */
 
 
      }
