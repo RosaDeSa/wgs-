@@ -134,8 +134,23 @@ workflow {
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
      
      //multiqc_conf(fastqc.out.completed)
-
-     multiqc(fastqc.out.completed)
+         // Reports
+    Channel 
+        .of  ( fastqc.out )
+        .mix ( align.out )
+        .mix ( sorting.out )
+        .mix ( markduplicates.out )
+        .mix ( BaseRecalibrator.out )
+        .mix ( applybsrq.out )
+        .mix ( haplotypecall.out )
+        .mix ( picard.out )
+        .mix ( vep.out ) 
+        .collect()
+        .set{ ch_reports }
+    
+    multiqc( ch_reports )
+     
+     //multiqc(fastqc.out.completed)
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir

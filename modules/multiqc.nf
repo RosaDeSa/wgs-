@@ -12,21 +12,21 @@ process multiqc {
    }
 
       input:
-      path(completed)
+      path(ch_reports)
        //path(completed2)
       //path(config)
 
 
       output:
           path 'multiqc.html', emit: multiqc_report
-          path '*_data'
+          path '*_data' , emit: data
          
 
 
       script:
 
         """
-       multiqc -n multiqc.html . --cl-config "log_filesize_limit: 2000000000" 
+      multiqc -v -f .
       
         """
 }
