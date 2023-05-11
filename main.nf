@@ -133,9 +133,9 @@ workflow {
 
      vep(haplotypecall.out.gatk_haplotyper,fasta.collect())
      
-     multiqc_conf(variantcalling.out.completed2,fastqc.out.completed)
+     multiqc_conf(fastqc.out.completed)
 
-     multiqc(variantcalling.out.completed2,fastqc.out.completed)
+     multiqc(fastqc.out.completed)
     
      //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
      //download_cachedir
