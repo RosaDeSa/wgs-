@@ -13,7 +13,7 @@ process multiqc {
 
       input:
       path(completed)
-       path(completed2)
+       //path(completed2)
       //path(config)
 
 
