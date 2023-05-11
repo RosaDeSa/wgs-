@@ -12,7 +12,7 @@ process multiqc {
    }
 
       input:
-      path(ch_reports)
+       path files_path
        //path(completed2)
       //path(config)
 
