@@ -137,7 +137,7 @@ workflow {
          // Reports
   
     
-    multiqc( fastqc.out.mix(picard.out))
+    multiqc( fastqc.out.collect(), picard.out.collect())
      
      //multiqc(fastqc.out.completed)
     
