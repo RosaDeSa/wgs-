@@ -13,10 +13,10 @@ process multiqc {
 
       input:
       file ("fastqc/*") 
-      file ('GATK/*') 
-      file ('Haplotyper/*') 
+      //file ('GATK/*') 
+      //file ('Haplotyper/*') 
       file ('picard/*') 
-      file ('VEP/*') 
+      //file ('VEP/*') 
        //path files_path
        //path(completed2)
       //path(config)

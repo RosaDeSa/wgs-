@@ -135,20 +135,9 @@ workflow {
      
      //multiqc_conf(fastqc.out.completed)
          // Reports
-    Channel 
-        .of  ( fastqc.out )
-        .mix ( align.out )
-        .mix ( sorting.out )
-        .mix ( markduplicates.out )
-        .mix ( baserecal.out )
-        .mix ( applybsrq.out )
-        .mix ( haplotypecall.out )
-        .mix ( picard.out )
-        .mix ( vep.out ) 
-        .collect()
-        .set{ ch_reports }
+  
     
-    multiqc( ch_reports )
+    multiqc( fastqc.out.mix(picard.out).collect())
      
      //multiqc(fastqc.out.completed)
     
