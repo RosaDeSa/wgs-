@@ -140,7 +140,7 @@ workflow {
         .mix ( align.out )
         .mix ( sorting.out )
         .mix ( markduplicates.out )
-        .mix ( BaseRecalibrator.out )
+        .mix ( baserecal.out )
         .mix ( applybsrq.out )
         .mix ( haplotypecall.out )
         .mix ( picard.out )
