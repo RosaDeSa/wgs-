@@ -26,7 +26,7 @@ process multiqc {
       script:
 
         """
-       multiqc $params.outdir -n multiqc.html . --cl-config "log_filesize_limit: 2000000000" 
+       multiqc -n multiqc.html . --cl-config "log_filesize_limit: 2000000000" 
       
         """
 }
