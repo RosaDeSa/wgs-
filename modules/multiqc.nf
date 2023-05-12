@@ -19,7 +19,6 @@ process multiqc {
       //file ('VEP/*') 
        //path files_path
      path(completed)
-     path(completed2)
       //path(config)
 
 
