@@ -31,7 +31,6 @@ process picard {
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_indexstat.txt"), emit: bamstat
  path("fasta_modified.dict"), emit: genome_dict
  path("list.interval_list"), emit: interval_list
-  path("completed2.out"), emit: completed2
 
      
 script:
