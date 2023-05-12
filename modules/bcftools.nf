@@ -24,10 +24,11 @@ process bcftools {
 
  """
 
-bcftools annotate -c ID -a ${gatk_haplotyper} ${sample_id}.ann.vcf
+bcftools +fill-tags ${gatk_haplotyper} -Ob -o ${sample_id}.ann.vcf  -- -t QD,FS,MQ
+
 
 """
 
 }
 
-
+//aggiungere le informazioni al vcd di quality depth, fisher test e  RS mapping quality con bcftools
