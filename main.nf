@@ -94,7 +94,7 @@ workflow {
 
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
-     qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
