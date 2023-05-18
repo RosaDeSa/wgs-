@@ -14,9 +14,9 @@ process vep {
 
 
    input:
-   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(bcftools)
-   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(gatk_haplotyper)
-   path(fasta)
+
+    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(filtered_vcf)
+    path(fasta)
 
    output:
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.VEP.ann.vcf"), emit:vep
@@ -25,7 +25,7 @@ process vep {
 script:
 """
  vep \\
-        -i ${gatk_haplotyper} \\
+        -i ${filtered_vcf} \\
         -o ${sample_id}.VEP.ann.vcf \\
         --fasta $fasta \\
         --assembly GRCh38 \\

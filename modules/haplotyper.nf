@@ -32,7 +32,8 @@ process haplotypecall {
 
    output:
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_haplotype.vcf"), emit:  gatk_haplotyper
-
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_snps.vcf"), emit:  select_snps
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_indel.vcf"), emit:  select_indel
 
    script:
 
@@ -44,6 +45,20 @@ process haplotypecall {
         --reference $fasta \\
         --dbsnp ${known_dbsnp} \\
         --tmp-dir . \\
+
+      gatk SelectVariants \\
+      -R $fasta \\
+      -V  ${sample_id}_haplotype.vcf \\
+      --select-type SNP \\
+      -O ${sample_id}_snps.vcf \\
+
+      gatk SelectVariants \\
+      -R $fasta \\
+      -V  ${sample_id}_haplotype.vcf \\
+      --select-type INDEL \\
+      -O ${sample_id}_indel.vcf \\
+
    """
 }
 
+//adding selection of SNP and indels after haplotyper
