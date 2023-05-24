@@ -12,8 +12,10 @@ process mergevcf {
 
 
    input:
-   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(ready_snp)
-   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(ready_indel)
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(filtered_snps)
+   tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(filtered_indels)
+   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(ready_snp)
+   //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path(ready_indel)
 
 
     
@@ -27,8 +29,8 @@ process mergevcf {
    """
 
     gatk MergeVcfs \\
-    -I ${ready_snp} \\
-    -I ${ready_indel} \\
+    -I ${filtered_snps} \\
+    -I ${filtered_indels} \\
     -O ${sample_id}_filtered.vcf
 
    """

@@ -18,7 +18,7 @@ include {sorting_bsqr} from './modules/sorting_bsqr.nf'
 include {haplotypecall} from './modules/haplotyper.nf'
 include {filterindel} from './modules/filterindel.nf' 
 include {filtersnps} from './modules/filtersnps.nf'
-include {selectvariants} from './modules/selectvariants.nf'
+//include {selectvariants} from './modules/selectvariants.nf'
 include {mergevcf} from './modules/mergevcf.nf'
 //include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
@@ -154,7 +154,7 @@ workflow {
                     known_mills.collect(), 
                     known_mills_tbi)
 
-     selectvariants(filterindel.out.filtered_indels, filtersnps.out.filtered_snps,
+     /*selectvariants(filterindel.out.filtered_indels, filtersnps.out.filtered_snps,
                     faidx.out.fai.collect(), 
                     picard.out.genome_dict, 
                     known_dbsnp.collect(),
@@ -163,8 +163,11 @@ workflow {
                     know_1000G.collect(),
                     know_1000G_tbi, 
                     known_mills.collect(), 
-                    known_mills_tbi)
-     mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel)
+                    known_mills_tbi)*/
+     
+     mergevcf(filterindel.out.filtered_indels, filtersnps.out.filtered_snps)               
+     
+     //mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel)
 
      vep(mergevcf.out.filtered_vcf,fasta.collect())
      
