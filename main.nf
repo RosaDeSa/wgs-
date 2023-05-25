@@ -9,6 +9,8 @@ include { trimming } from './modules/trimming'
 include {align} from './modules/align'
 include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
+include {featureCounts} from './modules/featurecounts.nf'
+include {coverage_stat} from './modules/coverage_stat.nf'
 include {markduplicates} from './modules/markduplicates.nf'
 include {faidx} from './modules/faidx.nf'
 include {baserecal} from './modules/baserecal.nf'
@@ -103,6 +105,14 @@ workflow {
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+
+          //featureCounts
+
+     featureCounts(sorting.out.aligned_bam_bai)
+
+     //coverage_stat
+
+     coverage_stat(featureCounts.out.base_coverage)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
@@ -175,9 +185,9 @@ workflow {
 
      vep(mergevcf.out.filtered_vcf,fasta.collect())
 
-     cnvantitarget(make_bed.out.gene_bed)
-     cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
-     cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
+     //cnvantitarget(make_bed.out.gene_bed)
+     //cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
+     //cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
 
      //multiqc_conf(fastqc.out.completed)
 
