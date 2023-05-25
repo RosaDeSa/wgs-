@@ -34,7 +34,6 @@ process filtersnps {
 
    """
 
-
     gatk VariantFiltration \\
     -R $fasta \\
     -V ${sample_id}_snps.vcf \\

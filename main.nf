@@ -23,9 +23,13 @@ include {mergevcf} from './modules/mergevcf.nf'
 //include {bcftools} from './modules/bcftools.nf'
 include {vep} from './modules/vep.nf'
 include {qualimap} from './modules/qualimap.nf'
+include {cnvantitarget} from './modules/cnvantitarget.nf'
+include {cnvreference} from './modules/cnvreference.nf'
+include {cnvbatch} from './modules/cnvbatch.nf'
 //include {multiqc_conf} from './modules/multiqc_conf.nf'
 include {multiqc} from './modules/multiqc.nf'
 //include {snpeff} from './modules/snpeff.nf'
+
 
 /*include {vcf_panel} from './modules/vcf_panel.nf'
 include {oncokb} from './modules/oncokb.nf'
@@ -170,7 +174,11 @@ workflow {
      //mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel)
 
      vep(mergevcf.out.filtered_vcf,fasta.collect())
-     
+
+     cnvantitarget(make_bed.out.gene_bed)
+     cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
+     cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
+
      //multiqc_conf(fastqc.out.completed)
 
     

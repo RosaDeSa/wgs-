@@ -1,9 +1,9 @@
-process CNVantitarget {
+process cnvreference {
     container 'docker://etal/cnvkit'
     echo true
     echo true
-    label 'CNVantitarget'
-    tag 'CNVantitarget'
+    label 'cnvreference'
+    tag 'cnvreference'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
             if (filename.indexOf("bed") > 0)     "CNV/$filename"     
@@ -13,21 +13,23 @@ process CNVantitarget {
 
     input:
     path(gene_bed)
+    path(fasta)
+    path(antitargets)
 
     output:
-    path("*.bed"), emit: antitargets
+    path("*.cnn"), emit: cnn
    
 
     """
     cnvkit.py \\
-        antitarget \\
-        $gene_bed \\
-        --output CNV.antitarget.bed \\
-        $args
+        reference \\
+        --fasta $fasta \\
+        --targets $gene_bed \\
+        --antitargets $antitargets \\
+        --output CNV.reference.cnn \\
+    
 
     """
 }
 
-
-
-
+   

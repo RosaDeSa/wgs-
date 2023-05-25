@@ -1,9 +1,9 @@
-process CNVbatch {
+process cnvbatch {
     container 'docker://etal/cnvkit'
     echo true
     echo true
-    label 'CNVbatch'
-    tag 'CNVbatch'
+    label 'cnvbatch'
+    tag 'cnvbatch'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
             if (filename.indexOf("bed") > 0)     "CNV/$filename"     
@@ -27,7 +27,7 @@ process CNVbatch {
 
             cnvkit.py \\
             batch \\
-            $normal_args \\
+            $aligned_bam_bai \\
             $fasta \\
             $cnn \\
             $gene_bed \\
