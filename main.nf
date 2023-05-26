@@ -108,7 +108,7 @@ workflow {
 
           //featureCounts
 
-     featureCounts(sorting.out.aligned_bam_bai)
+     featureCounts(sorting.out.aligned_bam_bai, genes_ch)
 
      //coverage_stat
 
