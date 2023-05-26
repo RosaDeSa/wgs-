@@ -11,6 +11,7 @@ include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
 include {featureCounts} from './modules/featurecounts.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
+include {depthcoverage} from './modules/depthcoverage.nf'
 include {markduplicates} from './modules/markduplicates.nf'
 include {faidx} from './modules/faidx.nf'
 include {baserecal} from './modules/baserecal.nf'
@@ -112,7 +113,9 @@ workflow {
 
      //coverage_stat
 
-     coverage_stat(featureCounts.out.base_coverage)
+     coverage_stat(featureCounts.out.base_coverage )
+
+     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai, picard.out.interval_list)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
