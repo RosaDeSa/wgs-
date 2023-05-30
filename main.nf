@@ -29,7 +29,7 @@ include {qualimap} from './modules/qualimap.nf'
 include {cnvantitarget} from './modules/cnvantitarget.nf'
 include {cnvreference} from './modules/cnvreference.nf'
 include {cnvbatch} from './modules/cnvbatch.nf'
-//include {multiqc_conf} from './modules/multiqc_conf.nf'
+include {multiqc_conf} from './modules/multiqc_conf.nf'
 include {multiqc} from './modules/multiqc.nf'
 //include {snpeff} from './modules/snpeff.nf'
 
@@ -193,10 +193,10 @@ workflow {
      //cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
      //cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
 
-     //multiqc_conf(fastqc.out.completed)
+     multiqc_conf(fastqc.out.completed, vep.out.completed2)
 
     
-     // multiqc( fastqc.out.completed)
+     multiqc(fastqc.out.completed, vep.out.completed2)
      
      //multiqc(fastqc.out.completed)
     

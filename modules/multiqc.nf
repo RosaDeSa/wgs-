@@ -19,21 +19,20 @@ process multiqc {
       //file ('VEP/*') 
        //path files_path
      path(completed)
+     path(completed2)
       //path(config)
 
 
-      output:
+  
+     output:
           path 'multiqc.html', emit: multiqc_report
-          path '*_data' , emit: data
+          path '*_data'
          
-
 
       script:
 
-        """
-      multiqc -v -f .
-      
-        """
+      """
+     multiqc $params.outdir -n multiqc.html  --config $params.outdir/Coverage_multiqc_config.yaml --cl-config "log_filesize_limit: 2000000000"       
+      """
 }
 
-       //multiqc $params.outdir -n multiqc.html  --config $params.outdir/Coverage_multiqc_config.yaml --cl-config "log_filesize_limit: 2000000000" 

@@ -16,11 +16,13 @@ process depthcoverage {
    path(interval_list)
    path(fai)
    path(fasta)
+   path(genelist)
+
 
    output:
+
    tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_base.txt"), emit: coverage_depth
    
-
    script:
 
    """
@@ -30,6 +32,7 @@ process depthcoverage {
         --intervals ${interval_list} \\
         --output ${sample_id}_base.txt \\
         --reference $fasta \\
+        --
 
    """
 }

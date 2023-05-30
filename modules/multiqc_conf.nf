@@ -15,7 +15,7 @@ process multiqc_conf {
       //completed2 just to run multiqc in the end of the other process
     
       path(completed)
-      //path(completed2)
+      path(completed2)
 
   
 
