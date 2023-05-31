@@ -195,10 +195,10 @@ workflow {
      //cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
      //cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
 
-     multiqc_conf(fastqc.out.completed, vep.out.completed2)
+     //multiqc_conf(fastqc.out.completed, vep.out.completed2)
 
     
-     multiqc(fastqc.out.completed, vep.out.completed2)
+     //multiqc(fastqc.out.completed, vep.out.completed2)
      
      //multiqc(fastqc.out.completed)
     
