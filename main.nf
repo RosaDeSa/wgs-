@@ -116,13 +116,15 @@ workflow {
 
      coverage_stat(featureCounts.out.base_coverage )
 
-     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
      //faidx samtools
 
      faidx(fasta.collect()) 
+
+     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai)
+
 
      //BaseRecalibrator
      
