@@ -15,6 +15,7 @@ process depthcoverage {
    tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
    //path(fai)
    path(fasta)
+   path(genome_dict)
 
 
    output:
