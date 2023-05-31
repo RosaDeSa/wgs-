@@ -29,7 +29,7 @@ process depthcoverage {
         --input ${sample_id}.sorted.bam \\
         --intervals ${params.interval_list} \\
         --output ${sample_id}_base.txt \\
-        --reference $fasta \\
+        --reference /home/tigem/r.desantis/wgs/results/ref/index/genome.fa \\
 
    """
 }
