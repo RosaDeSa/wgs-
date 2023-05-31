@@ -31,6 +31,7 @@ process depthcoverage {
         --intervals ${params.interval_list} \\
         --output ${sample_id}_base.txt \\
         --reference /home/tigem/r.desantis/wgs/results/ref/index/genome.fa \\
+        --sequence-dictionary ${genome_dict}
 
    """
 }
