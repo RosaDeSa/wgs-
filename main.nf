@@ -116,7 +116,7 @@ workflow {
 
      coverage_stat(featureCounts.out.base_coverage )
 
-     //depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai, picard.out.interval_list)
+     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai)
      
      markduplicates(sorting.out.aligned_bam_bai)
 
