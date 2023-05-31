@@ -13,7 +13,7 @@ process depthcoverage {
    input:
 
    tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
-   path(fai)
+   //path(fai)
    path(fasta)
 
 

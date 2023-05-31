@@ -123,7 +123,8 @@ workflow {
 
      faidx(fasta.collect()) 
 
-     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(), faidx.out.fai)
+     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect())
+     
 
 
      //BaseRecalibrator
