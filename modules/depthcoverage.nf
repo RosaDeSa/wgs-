@@ -26,7 +26,7 @@ process depthcoverage {
    """
       
        gatk DepthOfCoverage \\
-        --input ${aligned_bam_bai} \\
+        --input ${sample_id}.sorted.bam \\
         --intervals ${params.interval_list} \\
         --output ${sample_id}_base.txt \\
         --reference $fasta \\
