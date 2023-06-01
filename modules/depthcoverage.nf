@@ -30,8 +30,8 @@ process depthcoverage {
         --input ${sample_id}.sorted.bam \\
         --intervals ${params.interval_list} \\
         --output ${sample_id}_base.txt \\
-        --reference ${fasta} \\
-        --sequence-dictionary ${genome_dict} \\
+        --reference fasta_modified.fa \\
+        --sequence-dictionary fasta_modified.dict \\
 
    """
 }
