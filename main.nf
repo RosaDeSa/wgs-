@@ -123,7 +123,7 @@ workflow {
 
      faidx(fasta.collect()) 
 
-     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(),picard.out.genome_dict)
+     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(),picard.out.genome_dict, faidx.fai)
      
 
 
