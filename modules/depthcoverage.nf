@@ -31,7 +31,7 @@ process depthcoverage {
         --intervals ${params.interval_list} \\
         --output ${sample_id}_base.txt \\
         --reference ${fasta} \\
-        --sequence-dictionary ${genome_dict}
+        --sequence-dictionary ${genome_dict} \\
 
    """
 }
