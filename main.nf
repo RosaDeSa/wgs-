@@ -126,7 +126,6 @@ workflow {
      depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(),picard.out.genome_dict, faidx.out.fai)
      
 
-
      //BaseRecalibrator
      
      baserecal(markduplicates.out.bam_markdup,faidx.out.fai ,known_dbsnp, known_dbsnp_tbi, fasta.collect(), know_1000G, know_1000G_tbi, known_mills, known_mills_tbi, picard.out.genome_dict)
