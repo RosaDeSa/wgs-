@@ -30,7 +30,7 @@ process featureCounts {
 """
 
 featureCounts -O -a ${genes_ch} -g gene_id -t exon -p ${sample_id}.sorted.bam -o ${sample_id}_count.txt
-samtools depth -q 20 -aa  ${sample_id}.sorted.bam -b ${exons_ch} > ${sample_id}.base.coverage.txt
+samtools depth -q 20 -aa  ${sample_id}.sorted.bam > ${sample_id}.base.coverage.txt
 
 
 """
