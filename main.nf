@@ -68,7 +68,7 @@ known_mills_tbi= Channel.fromPath( params.known_mills_tbi)
 known_dbsnp = Channel.fromPath( params.known_dbsnp)
 known_dbsnp_tbi = Channel.fromPath( params.known_dbsnp_tbi)
 bed_ch = Channel.fromPath(params.bed)
-genelist = Channel.fromPath(params.genelist)
+//genelist = Channel.fromPath(params.genelist)
 exons_ch = Channel.fromPath(params.exons_wgs)
 //indexed_ch = Channel.fromPath('gs://tigem-gcacchiarelli-01/Reference/Human_hg38_v102/Index_bwa/genome.*')
 
