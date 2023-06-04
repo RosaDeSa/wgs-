@@ -27,7 +27,7 @@ process picard {
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_GCbias.{txt,pdf}"), emit: gc_bias_metrics
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_qualitycycle.{txt,pdf}"), emit: mean_quality_cycle
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_qualityscore.{txt,pdf}"), emit: score_distribution
- tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_{HS,aln}_metrics.txt"), emit: metrics
+ tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_{HS,aln,wgs}_metrics.txt"), emit: metrics
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_indexstat.txt"), emit: bamstat
  path("fasta_modified.dict"), emit: genome_dict
  path("list.interval_list"), emit: interval_list
@@ -52,6 +52,9 @@ java -jar /picard.jar CreateSequenceDictionary --R /home/tigem/r.desantis/wgs/re
 java -jar /picard.jar BedToIntervalList --INPUT ${gene_bed} --OUTPUT list.interval_list --SD "fasta_modified.dict" 
 
 java -jar /picard.jar CollectHsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_HS_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa -BI "list.interval_list" -TI "list.interval_list"
+
+java -jar picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_wgs_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa --INTERVALS "list.interval_list"
+
 
 """
 
