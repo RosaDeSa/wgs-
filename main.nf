@@ -124,7 +124,7 @@ workflow {
 
      faidx(fasta.collect()) 
 
-     depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(),picard.out.genome_dict, faidx.out.fai)
+     //depthcoverage(sorting.out.aligned_bam_bai, fasta.collect(),picard.out.genome_dict, faidx.out.fai)
      
      //BaseRecalibrator
      
