@@ -15,7 +15,7 @@ process featureCounts {
         
  input:
  tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
- //path(genes_ch)
+ path(genes_ch)
  path(exons_ch)
 
 
