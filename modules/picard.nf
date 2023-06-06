@@ -53,7 +53,6 @@ java -jar /picard.jar BedToIntervalList --INPUT ${gene_bed} --OUTPUT list.interv
 
 java -jar /picard.jar CollectHsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_HS_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa -BI "list.interval_list" -TI "list.interval_list"
 
-java -jar picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_wgs_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa --INTERVALS "list.interval_list"
 
 
 """
@@ -67,3 +66,5 @@ java -jar picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id
 //java -jar /picard.jar BedToIntervalList --INPUT ${gene_bed} --OUTPUT list.interval_list --SD $params.outdir/picard/fasta_modified.dict 
 
 //java -jar /picard.jar CollectHsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_HS_metrics.txt -R $params.outdir/ref/index/genome.fa -BI list.interval_list -TI list.interval_list
+
+//java -jar picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_wgs_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa --INTERVALS "list.interval_list"
