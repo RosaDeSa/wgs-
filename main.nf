@@ -115,7 +115,7 @@ workflow {
      featureCounts(sorting.out.aligned_bam_bai, genes_ch,  exons_ch,)
      //coverage_stat
 
-     coverage_stat(featureCounts.out.base_coverage )
+     coverage_stat(featureCounts.out.base_coverage, featureCounts.out.base_coverage_ex)
 
      
      markduplicates(sorting.out.aligned_bam_bai)
