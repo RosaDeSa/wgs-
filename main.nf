@@ -11,6 +11,7 @@ include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
 include {featureCounts} from './modules/featurecounts.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
+include {coverage_stat2} from './modules/coverage_stat2.nf'
 include {depthcoverage} from './modules/depthcoverage.nf'
 include {markduplicates} from './modules/markduplicates.nf'
 include {faidx} from './modules/faidx.nf'
@@ -115,7 +116,8 @@ workflow {
      featureCounts(sorting.out.aligned_bam_bai, genes_ch,  exons_ch,)
      //coverage_stat
 
-     coverage_stat(featureCounts.out.base_coverage, featureCounts.out.base_coverage_ex)
+     coverage_stat(featureCounts.out.base_coverage)
+     coverage_stat2(featureCounts.out.base_coverage_ex)
 
      
      markduplicates(sorting.out.aligned_bam_bai)
