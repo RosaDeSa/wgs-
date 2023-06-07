@@ -48,3 +48,5 @@ process trimming {
 }
 // -t, --trim_tail1  50
 //  -T, --trim_tail2 50
+
+//--trim 0,0,0,50 \
