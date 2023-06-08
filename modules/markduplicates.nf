@@ -6,6 +6,7 @@ process markduplicates {
   publishDir "$params.outdir" , mode: 'copy',
      saveAs: {filename ->
         if (filename.indexOf("bam"))     "bwa/markduplicates/$filename"
+         else if (filename.endsWith("txt"))     "bwa/markduplicates/$filename"
       else null
    }
 
@@ -15,9 +16,10 @@ process markduplicates {
 
   output:
   tuple val(sample_id), val(id_patient), val(gender),val(id_run), path("${sample_id}_markdup.bam"), emit: bam_markdup
+  tuple val(sample_id), val(id_patient), val(gender),val(id_run), path("${sample_id}_marked_dup_metrics.txt"), emit: markduo_metrics
 
   """
-  gatk MarkDuplicates -M ${sample_id}.marked_dup_metrics.txt -I ${sample_id}.sorted.bam  -O ${sample_id}_markdup.bam
+  gatk MarkDuplicates -M ${sample_id}_marked_dup_metrics.txt -I ${sample_id}.sorted.bam  -O ${sample_id}_markdup.bam
   """
 
 }
