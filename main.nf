@@ -10,6 +10,7 @@ include {align} from './modules/align'
 include {sorting} from './modules/sorting'
 include {picard} from './modules/picard'
 include {featureCounts} from './modules/featurecounts.nf'
+include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
 include {coverage_stat2} from './modules/coverage_stat2.nf'
 include {depthcoverage} from './modules/depthcoverage.nf'
@@ -114,12 +115,17 @@ workflow {
 
      //featureCounts(sorting.out.aligned_bam_bai, genes_ch)
      featureCounts(sorting.out.aligned_bam_bai, exons_ch)
+
+        //calculator
+
+     calculator(featureCounts.out.base_coverage_ex)
+     
      //genes_ch,
      //coverage_stat
 
      coverage_stat(featureCounts.out.base_coverage)
      coverage_stat2(featureCounts.out.base_coverage_ex)
-
+ 
      
      markduplicates(sorting.out.aligned_bam_bai)
 
