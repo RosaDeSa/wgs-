@@ -13,7 +13,7 @@ process calculator {
    }
 
  input:
- tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(base_coverage)
+ tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(base_coverage_ex)
 
 
  output:
@@ -24,7 +24,7 @@ script:
 """
 
 median="$baseDir/bin/median.awk"
-cut -f 3 ${sample_id}.base.coverage.txt | sort -n | awk -f \$median > median_tmp
+cut -f 3 ${sample_id}.base.coverage_ex.txt | sort -n | awk -f \$median > median_tmp
 echo ${sample_id} > sample
 paste sample median_tmp > ${sample_id}_median.txt
 
