@@ -51,7 +51,7 @@ java -jar /picard.jar CreateSequenceDictionary --R /home/tigem/r.desantis/wgs/re
 
 java -jar /picard.jar BedToIntervalList --INPUT ${gene_bed} --OUTPUT list.interval_list --SD "fasta_modified.dict" 
 
-java -jar picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_wgs_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa --INTERVALS "list.interval_list"
+java -jar /picard.jar CollectWgsMetrics -I ${sample_id}.sorted.bam -O ${sample_id}_wgs_metrics.txt -R /home/tigem/r.desantis/wgs/results/ref/index/genome.fa --INTERVALS "list.interval_list"
 
 
 
