@@ -16,12 +16,12 @@ process featureCounts {
  input:
  tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
  path(exons_ch)
- //path(genes_ch)
+ path(genes_ch)
 
 
 
  output:
- //tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_count.txt"), emit: txt_featurecount
+ tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_count.txt"), emit: txt_featurecount
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.base.coverage_ex.txt"), emit: base_coverage_ex
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.base.coverage.txt"), emit: base_coverage
 
@@ -30,6 +30,7 @@ process featureCounts {
  
 """
 
+featureCounts -O -a ${genes_ch} -g gene_id -t exon -p ${sample_id}.sorted.bam -o ${sample_id}_count.txt 
 
 samtools depth -q 20 -aa  ${sample_id}.sorted.bam -b ${exons_ch} > ${sample_id}.base.coverage_ex.txt
 
