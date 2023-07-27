@@ -20,7 +20,7 @@ process markduplicates {
 
 
   """
-  gatk MarkDuplicates -M ${sample_id}_marked_dup_metrics.txt -I ${sample_id}.sorted.bam  -O ${sample_id}.sorted.bam 
+  gatk MarkDuplicates -M ${sample_id}_marked_dup_metrics.txt -I ${sample_id}.sorted.bam  -O ${sample_id}.sorted.bam REMOVE_DUPLICATES=true
   """
 
 }
