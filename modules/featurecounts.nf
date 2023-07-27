@@ -19,7 +19,6 @@ process featureCounts {
  path(genes_ch)
 
 
-
  output:
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}_count.txt"), emit: txt_featurecount
  tuple val(sample_id), val(id_patient), val(gender), val(id_run), path("${sample_id}.base.coverage_ex.txt"), emit: base_coverage_ex

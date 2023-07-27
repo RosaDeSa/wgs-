@@ -71,7 +71,7 @@ known_dbsnp = Channel.fromPath( params.known_dbsnp)
 known_dbsnp_tbi = Channel.fromPath( params.known_dbsnp_tbi)
 bed_ch = Channel.fromPath(params.bed)
 //genelist = Channel.fromPath(params.genelist)
-exons_ch = Channel.fromPath(params.exons_wgs)
+exons_ch = Channel.fromPath(params.exons_wgs_pad.bed)
 //indexed_ch = Channel.fromPath('gs://tigem-gcacchiarelli-01/Reference/Human_hg38_v102/Index_bwa/genome.*')
 
 
@@ -98,15 +98,17 @@ workflow {
      //trimming
      trimming(inputPairReads)
 
-     //alignement
+     //alignment
      align(indexed_ch.collect(),trimming.out.samples_trimmed)
 
      //sort
-
      sorting(align.out.aligned_sam) 
 
-     //picard
+     //markduplicates
+     if (!params.skipmarkduplicates){
+     markduplicates(sorting.out.aligned_bam_bai)}
 
+     //picard
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
@@ -126,8 +128,6 @@ workflow {
      coverage_stat(featureCounts.out.base_coverage)
      coverage_stat2(featureCounts.out.base_coverage_ex)
  
-     
-     markduplicates(sorting.out.aligned_bam_bai)
 
      //faidx samtools
 
