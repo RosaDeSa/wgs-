@@ -1,8 +1,8 @@
 nextflow.enable.dsl=2
 
 //modules
-include { bwa_index } from './modules/bwa_index'
-include { download_index } from './modules/download_index'
+include { bwa_index } from './../modules/bwa_index'
+include { download_index } from './../modules/download_index'
 include { make_bed } from './modules/make_bed'
 include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
