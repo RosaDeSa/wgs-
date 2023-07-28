@@ -70,6 +70,7 @@ exons_ch = Channel.fromPath(params.exons_wgs_pad.bed)
 workflow pcr { 
    take:
      input_ch
+     inputPairReads
      fasta
      genes_ch
      index_ch
