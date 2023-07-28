@@ -71,6 +71,7 @@ workflow pcr {
    take:
      input_ch
      fasta
+     genes_ch
      index_ch
      know_1000G
      know_1000G_tbi
