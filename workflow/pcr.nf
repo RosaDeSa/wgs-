@@ -121,7 +121,7 @@ workflow pcr {
      picard(markduplicates.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //featureCounts(sorting.out.aligned_bam_bai, genes_ch)
-     featureCounts(markduplicates.out.aligned_bam_bai, exons_ch)
+     featureCounts(markduplicates.out.aligned_bam_bai, exons_ch, genes_ch)
 
       //calculator
      calculator(featureCounts.out.base_coverage_ex)
