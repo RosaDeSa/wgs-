@@ -38,7 +38,7 @@ workflow {
  if (!params.pcrfree) 
   pcr(input_ch,fasta,index_ch,know_1000G,know_1000G_tbi,known_mills,known_mills_tbi,known_dbsnp,known_dbsnp_tbi,bed_ch,exons_ch)
  else
-  pcrfree(input_ch,fasta,index_ch,know_1000G,know_1000G_tbi,known_mills,known_mills_tbi,known_dbsnp,known_dbsnp_tbi,bed_ch,exons_ch)
+  pcr_free(input_ch,fasta,index_ch,know_1000G,know_1000G_tbi,known_mills,known_mills_tbi,known_dbsnp,known_dbsnp_tbi,bed_ch,exons_ch)
 }
 
 workflow.onComplete { 
