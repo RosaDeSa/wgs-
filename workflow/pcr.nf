@@ -67,7 +67,7 @@ exons_ch = Channel.fromPath(params.exons_wgs_pad.bed)
 
 */
 
-workflow { 
+workflow pcr { 
 
      //index
        if(!params.downloadIndex) {
