@@ -105,21 +105,17 @@ workflow {
      sorting(align.out.aligned_sam) 
 
      //markduplicates
-     if (!params.skipmarkduplicates){
-     markduplicates(sorting.out.aligned_bam_bai)}
+     if (params.skipmarkduplicates){
+     markduplicates(sorting.out.aligned_bam_bai)
+     sorting(markduplicates.out.bam_markdup) }
 
      //picard
      picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
-     //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
-
-          //featureCounts
-
      //featureCounts(sorting.out.aligned_bam_bai, genes_ch)
      featureCounts(sorting.out.aligned_bam_bai, exons_ch)
 
-        //calculator
-
+      //calculator
      calculator(featureCounts.out.base_coverage_ex)
      
      //genes_ch,
@@ -128,7 +124,6 @@ workflow {
      coverage_stat(featureCounts.out.base_coverage)
      coverage_stat2(featureCounts.out.base_coverage_ex)
  
-
      //faidx samtools
 
      faidx(fasta.collect()) 
