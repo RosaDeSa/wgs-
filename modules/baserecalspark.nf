@@ -13,7 +13,7 @@ process baserecalspark {
    }
 
 input:
-tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(bam_markdup)
+tuple val(sample_id), val(id_patient), val(gender),val(id_run),path(aligned_bam_bai)
 path(fai)
 path(genome_dict)
 path(known_dbsnp)
