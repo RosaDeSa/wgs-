@@ -31,7 +31,7 @@ known_mills_tbi= Channel.fromPath( params.known_mills_tbi)
 known_dbsnp = Channel.fromPath( params.known_dbsnp)
 known_dbsnp_tbi = Channel.fromPath( params.known_dbsnp_tbi)
 bed_ch = Channel.fromPath(params.bed)
-exons_ch = Channel.fromPath(params.exons_wgs_pad.bed)
+exons_ch = Channel.fromPath(params.exons_wgs)
 
 //workflow
 workflow {
