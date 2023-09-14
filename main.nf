@@ -8,7 +8,7 @@ include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include {align} from './modules/align'
 include {sorting} from './modules/sorting'
-include {picard} from './modules/picard'
+/*include {picard} from './modules/picard'
 include {featureCounts} from './modules/featurecounts.nf'
 include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
@@ -107,7 +107,7 @@ workflow {
 
      //picard
 
-     picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     /* picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
@@ -192,36 +192,36 @@ workflow {
                     know_1000G.collect(),
                     know_1000G_tbi, 
                     known_mills.collect(), 
-                    known_mills_tbi)*/
+                    known_mills_tbi)*/ //don't run this 
      
-     mergevcf(filterindel.out.filtered_indels, filtersnps.out.filtered_snps)               
+    /* mergevcf(filterindel.out.filtered_indels, filtersnps.out.filtered_snps)               
      
-     //mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel)
+     //mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel) don't run this
 
      vep(mergevcf.out.filtered_vcf,fasta.collect())
 
-     //cnvantitarget(make_bed.out.gene_bed)
-     //cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect())
-     //cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn)
+     //cnvantitarget(make_bed.out.gene_bed) don't run this 
+     //cnvreference(make_bed.out.gene_bed, cnvantitarget.out.antitargets, fasta.collect()) don't run this 
+     //cnvbatch(make_bed.out.gene_bed, fasta.collect(),faidx.out.fai.collect(),cnvantitarget.out.antitargets, cnvreference.out.cnn) don't run this 
 
-     //multiqc_conf(fastqc.out.completed, vep.out.completed2)
+     //multiqc_conf(fastqc.out.completed, vep.out.completed2) don't run this 
 
     
-     //multiqc(fastqc.out.completed, vep.out.completed2)
+     //multiqc(fastqc.out.completed, vep.out.completed2) don't run this 
      
-     //multiqc(fastqc.out.completed)
+     //multiqc(fastqc.out.completed) don't run this  
     
-     //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect())
-     //download_cachedir
-     //vep(vcf_panel.out.subset_panel,fasta.collect())
+     //snpeff(haplotypecall.out.gatk_haplotyper,fasta.collect()) don't run this 
+     //download_cachedir don't run this 
+     //vep(vcf_panel.out.subset_panel,fasta.collect()) don't run this  
 
      /*
      //vcftomaf
-     vcf_panel(bcftools.out.passing_filter)
+     vcf_panel(bcftools.out.passing_filter) don't run this 
 
-     variantcalling(vcf_panel.out.subset_panel, vcf_panel.out.sample_tmp, vep.out.vep)
+     variantcalling(vcf_panel.out.subset_panel, vcf_panel.out.sample_tmp, vep.out.vep) don't run this  
 
-     oncokb(vep.out.vep)
+     oncokb(vep.out.vep) don't run this 
      
   */
 
