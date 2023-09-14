@@ -8,7 +8,7 @@ include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include {align} from './modules/align'
 include {sorting} from './modules/sorting'
-/*include {picard} from './modules/picard'
+include {picard} from './modules/picard'
 include {featureCounts} from './modules/featurecounts.nf'
 include {calculator} from './modules/calculator.nf'
 include {coverage_stat} from './modules/coverage_stat.nf'
@@ -107,7 +107,7 @@ workflow {
 
      //picard
 
-     /* picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
+     picard(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
      //qualimap(sorting.out.aligned_bam_bai,make_bed.out.gene_bed)
 
@@ -194,7 +194,7 @@ workflow {
                     known_mills.collect(), 
                     known_mills_tbi)*/ //don't run this 
      
-    /* mergevcf(filterindel.out.filtered_indels, filtersnps.out.filtered_snps)               
+     mergevcf(filterindel.out.filtered_indels, filtersnps.out.filtered_snps)               
      
      //mergevcf(selectvariants.out.ready_snp,selectvariants.out.ready_indel) don't run this
 
